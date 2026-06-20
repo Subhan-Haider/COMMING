@@ -22,20 +22,6 @@
     <div class="scan-vignette" aria-hidden="true"></div>
 
     <main class="shell">
-      <section class="hud-panel hud-panel-left" aria-label="System status">
-        <div class="panel-header">
-          <span class="panel-kicker">Core Systems</span>
-          <span class="pulse-dot dot-blue"></span>
-        </div>
-        <ul class="status-list">
-          <li><span class="pulse-dot dot-green"></span><span>Warp Engine</span><strong>93%</strong></li>
-          <li><span class="pulse-dot dot-blue"></span><span>Gravity Core</span><strong>Stable</strong></li>
-          <li><span class="pulse-dot dot-green"></span><span>Navigation</span><strong>Synced</strong></li>
-          <li><span class="pulse-dot dot-red"></span><span>Singularity</span><strong>Armed</strong></li>
-          <li><span id="camera-status-dot" class="pulse-dot dot-red"></span><span>Camera</span><strong id="camera-status-text">Offline</strong></li>
-        </ul>
-      </section>
-
       <section class="hero" aria-label="VOIDFORGE launch">
         <p class="eyebrow">AI Space Experience System</p>
         <h1>VOIDFORGE</h1>
@@ -57,19 +43,6 @@
           <button type="submit">Join Waitlist</button>
         </form>
         <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
-      </section>
-
-      <section class="hud-panel hud-panel-right" aria-label="Camera module">
-        <div class="panel-header">
-          <span class="panel-kicker">Optic Uplink</span>
-          <span class="pulse-dot dot-green"></span>
-        </div>
-        <div class="camera-frame">
-          <video id="camera-feed" autoplay playsinline muted></video>
-          <div id="camera-placeholder" class="camera-placeholder">CAMERA OFFLINE</div>
-          <div class="camera-hud" aria-hidden="true"></div>
-        </div>
-        <button id="camera-toggle" class="camera-toggle" type="button">Enable Camera</button>
       </section>
     </main>
 

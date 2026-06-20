@@ -6,13 +6,6 @@ const countdownEls = Object.fromEntries(ids.map((id) => [id, document.getElement
 const form = document.getElementById("subscribe-form");
 const emailInput = document.getElementById("email");
 const formMessage = document.getElementById("form-message");
-const video = document.getElementById("camera-feed");
-const placeholder = document.getElementById("camera-placeholder");
-const cameraToggle = document.getElementById("camera-toggle");
-const cameraStatusText = document.getElementById("camera-status-text");
-const cameraStatusDot = document.getElementById("camera-status-dot");
-
-let mediaStream = null;
 
 function pad(value, size = 2) {
   return String(value).padStart(size, "0");
@@ -30,51 +23,6 @@ function updateCountdown() {
   countdownEls.minutes.textContent = pad(minutes);
   countdownEls.seconds.textContent = pad(seconds);
 }
-
-function setCameraStatus(enabled) {
-  cameraStatusText.textContent = enabled ? "Online" : "Offline";
-  cameraStatusDot.classList.toggle("dot-green", enabled);
-  cameraStatusDot.classList.toggle("dot-red", !enabled);
-  video.style.display = enabled ? "block" : "none";
-  placeholder.style.display = enabled ? "none" : "grid";
-  cameraToggle.textContent = enabled ? "Disable Camera" : "Enable Camera";
-}
-
-async function enableCamera() {
-  if (!navigator.mediaDevices?.getUserMedia) {
-    formMessage.textContent = "Camera access is not available in this browser.";
-    return;
-  }
-
-  mediaStream = await navigator.mediaDevices.getUserMedia({
-    video: { width: { ideal: 960 }, height: { ideal: 720 }, facingMode: "user" },
-    audio: false,
-  });
-  video.srcObject = mediaStream;
-  setCameraStatus(true);
-}
-
-function disableCamera() {
-  if (mediaStream) {
-    mediaStream.getTracks().forEach((track) => track.stop());
-    mediaStream = null;
-  }
-  video.srcObject = null;
-  setCameraStatus(false);
-}
-
-cameraToggle.addEventListener("click", async () => {
-  try {
-    if (mediaStream) {
-      disableCamera();
-    } else {
-      await enableCamera();
-    }
-  } catch {
-    disableCamera();
-    formMessage.textContent = "Camera permission was blocked or unavailable.";
-  }
-});
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -97,4 +45,3 @@ form.addEventListener("submit", async (event) => {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
-setCameraStatus(false);

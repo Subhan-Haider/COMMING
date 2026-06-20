@@ -209,6 +209,8 @@ sudo certbot --nginx -d voidforge.example.com
 
 You can host `/frontend` on Vercel or Netlify and keep the API on your VPS.
 
+For Vercel, this repository includes `vercel.json`, so deploying from the project root will serve the static frontend instead of returning a platform 404.
+
 Add this before the frontend scripts in `frontend/index.html`, or inject it through your hosting platform:
 
 ```html
