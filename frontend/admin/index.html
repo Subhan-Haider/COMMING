@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VOIDFORGE Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./admin.css" />
+  </head>
+  <body>
+    <main class="admin-shell">
+      <section id="login-panel" class="admin-card login-card">
+        <p class="kicker">VOIDFORGE Command</p>
+        <h1>Admin Access</h1>
+        <form id="login-form">
+          <label for="username">Operator</label>
+          <input id="username" autocomplete="username" required />
+          <label for="password">Access Key</label>
+          <input id="password" type="password" autocomplete="current-password" required />
+          <button class="admin-button" type="submit">Authenticate</button>
+        </form>
+        <p id="login-message" class="message" role="status"></p>
+      </section>
+
+      <section id="dashboard" class="dashboard" hidden>
+        <header class="dashboard-header">
+          <div>
+            <p class="kicker">Subscriber Relay</p>
+            <h1>VOIDFORGE Admin</h1>
+          </div>
+          <button id="logout" class="ghost-button" type="button">Logout</button>
+        </header>
+
+        <div class="metrics">
+          <article class="admin-card">
+            <span>Total Subscribers</span>
+            <strong id="total-count">0</strong>
+          </article>
+          <article class="admin-card">
+            <span>Active Signals</span>
+            <strong id="active-count">0</strong>
+          </article>
+        </div>
+
+        <section class="admin-card table-card">
+          <div class="table-header">
+            <h2>Waitlist Registry</h2>
+            <button id="refresh" class="ghost-button" type="button">Refresh</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Email</th>
+                  <th>Status</th>
+                  <th>Created</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="subscriber-rows"></tbody>
+            </table>
+          </div>
+          <p id="dashboard-message" class="message" role="status"></p>
+        </section>
+      </section>
+    </main>
+    <script src="./admin.js"></script>
+  </body>
+</html>
