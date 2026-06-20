@@ -30,7 +30,7 @@ for (let i = 0; i < starCount; i += 1) {
   starPositions[i3 + 1] = Math.sin(angle) * radius;
   starPositions[i3 + 2] = -Math.random() * 1200;
 
-  const color = new THREE.Color().setHSL(0.52 + Math.random() * 0.22, 0.88, 0.62);
+  const color = new THREE.Color().setHSL(0.52 + Math.random() * 0.22, 0.74, 0.45);
   starColors[i3] = color.r;
   starColors[i3 + 1] = color.g;
   starColors[i3 + 2] = color.b;
@@ -44,7 +44,7 @@ const starMaterial = new THREE.PointsMaterial({
   size: 0.78,
   vertexColors: true,
   transparent: true,
-  opacity: 0.92,
+  opacity: 0.42,
   blending: THREE.AdditiveBlending,
   depthWrite: false,
 });
@@ -60,7 +60,7 @@ for (let i = 0; i < 28; i += 1) {
     new THREE.MeshBasicMaterial({
       color: i % 2 ? 0x37f7ff : 0x9a5cff,
       transparent: true,
-      opacity: 0.08,
+      opacity: 0.045,
       blending: THREE.AdditiveBlending,
     }),
   );
@@ -72,7 +72,7 @@ scene.add(tunnelGroup);
 
 const blackHole = new THREE.Mesh(
   new THREE.SphereGeometry(7, 48, 48),
-  new THREE.MeshBasicMaterial({ color: 0x000000 }),
+  new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.28 }),
 );
 blackHole.position.z = -180;
 scene.add(blackHole);
@@ -80,9 +80,9 @@ scene.add(blackHole);
 const accretion = new THREE.Mesh(
   new THREE.TorusGeometry(11, 0.55, 16, 150),
   new THREE.MeshBasicMaterial({
-    color: 0x37f7ff,
+    color: 0x00aecd,
     transparent: true,
-    opacity: 0.62,
+    opacity: 0.34,
     blending: THREE.AdditiveBlending,
   }),
 );
@@ -90,7 +90,7 @@ accretion.position.z = -180;
 accretion.rotation.x = 1.12;
 scene.add(accretion);
 
-const gravityGlow = new THREE.PointLight(0x7a5cff, 4.4, 310);
+const gravityGlow = new THREE.PointLight(0x4d7dff, 2.4, 310);
 gravityGlow.position.set(0, 0, -130);
 scene.add(gravityGlow);
 
